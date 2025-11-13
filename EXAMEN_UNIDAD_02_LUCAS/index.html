@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Responsive</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* ---------- CONTENEDOR PRINCIPAL ---------- */
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      display: grid;
+      gap: 8px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 60px 1.6fr 1fr 1fr 70px;
+      grid-template-areas:
+        "header menu"
+        "hero hero"
+        "main image"
+        "main extra"
+        "banner banner";
+      height: 640px;
+    }
+
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 18px;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .header { grid-area: header; background: #0b3d91; }
+    .menu   { grid-area: menu;   background: #e91e63; }
+    .hero   { grid-area: hero;   background: #2196f3; }
+    .main   { grid-area: main;   background: #0d47a1; }
+    .image  { grid-area: image;  background: #b2ebf2; color: black; }
+    .extra  { grid-area: extra;  background: #4caf50; }
+    .banner { grid-area: banner; background: #ffeb3b; color: black; font-weight: bold; }
+
+    /* ---------- TABLET ---------- */
+    @media (max-width: 900px) {
+      .container {
+        height: auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 60px auto auto auto 70px;
+        grid-template-areas:
+          "header menu"
+          "hero hero"
+          "main image"
+          "main extra"
+          "banner banner";
+      }
+    }
+
+    /* ---------- MÓVIL ---------- */
+    @media (max-width: 480px) {
+      .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "menu"
+          "hero"
+          "main"
+          "image"
+          "extra"
+          "banner";
+        height: auto;
+      }
+
+      .box {
+        font-size: 16px;
+        padding: 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box header">HEADER</div>
+    <div class="box menu">MENU</div>
+    <div class="box hero">HERO</div>
+    <div class="box main">MAIN</div>
+    <div class="box image">IMAGE</div>
+    <div class="box extra">EXTRA</div>
+    <div class="box banner">BANNER</div>
+  </div>
+</body>
+</html>
